@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  object: one
+  object_type: Object
+  user: one
+  is_like: false
+  status: MyString
+
+two:
+  object: two
+  object_type: Object
+  user: two
+  is_like: false
+  status: MyString

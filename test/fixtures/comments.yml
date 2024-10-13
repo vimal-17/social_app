@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: one
+  user: one
+  body: 
+  status: MyString
+  like_count: 1
+  dislike_count: 1
+
+two:
+  post: two
+  user: two
+  body: 
+  status: MyString
+  like_count: 1
+  dislike_count: 1

@@ -1,0 +1,42 @@
+<%= form_with(model: interaction) do |form| %>
+  <% if interaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>
+
+      <ul>
+        <% interaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :object_id %>
+    <%= form.text_field :object_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :object_type %>
+    <%= form.text_field :object_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_like %>
+    <%= form.check_box :is_like %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
