@@ -13,7 +13,7 @@ gem 'activerecord-jdbcpostgresql-adapter'
 gem 'puma', '~> 5.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+# gem 'sass-rails', '>= 6'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
@@ -69,3 +69,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari'
+
+# sidekiq for async jobs
+gem 'sidekiq'
+gem 'sidekiq-cron'

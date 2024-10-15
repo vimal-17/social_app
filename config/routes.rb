@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # Routes for Post
   get '/social/list_posts', to: 'posts#index'
   post '/social/create_post', to: 'posts#create'
-  get '/social/get_posts', to: 'posts#show'
+  get '/social/get_post', to: 'posts#show'
   post '/social/update_post', to: 'posts#update'
   delete '/social/delete_post', to: 'posts#destroy'
 

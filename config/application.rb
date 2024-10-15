@@ -8,6 +8,12 @@ Bundler.require(*Rails.groups)
 
 module SocialApp
   class Application < Rails::Application
+    # Set API-only mode
+    config.api_only = true
+
+    # Remove static file middleware
+    config.middleware.delete ActionDispatch::Static
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -21,6 +27,8 @@ module SocialApp
     Rails.application.configure do
       config.hosts.clear
     end
+
+    # config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #

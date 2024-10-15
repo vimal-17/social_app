@@ -25,10 +25,10 @@ class UsersController < ApplicationController
     user = User.includes(:groups, :posts, :comments, :interactions).find(params[:id]).as_json(
       include:
         {
-          post: { only: [:id, :title, :body, :status] },
-          group: { only: [:id, :name, :status] },
-          comment: { only: [:id, :body, :status, :post_id] },
-          interaction: { only: [:id, :is_like, :status, :object_id, :object_type] },
+          posts: { only: [:id, :title, :body, :status] },
+          groups: { only: [:id, :name, :status] },
+          comments: { only: [:id, :body, :status, :post_id] },
+          interactions: { only: [:id, :is_like, :status, :object_id, :object_type] },
         }
     )
 
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
     sort_by = params[:sort_by] || 'updated_at'
     sort_type = params[:sort_type] || 'desc'
 
-    query = User.includes(:groups, :posts, :comments, :interactions).page(@page).per(@page_limit).order("posts.#{sort_by} #{sort_type}")
+    query = User.includes(:groups, :posts, :comments, :interactions).page(@page).per(@page_limit).order("users.#{sort_by} #{sort_type}")
 
     return query
   end
@@ -115,10 +115,10 @@ class UsersController < ApplicationController
     users = query.as_json(
       include:
         {
-          post: { only: [:id, :title, :body, :status] },
-          group: { only: [:id, :name, :status] },
-          comment: { only: [:id, :body, :status, :post_id] },
-          interaction: { only: [:id, :is_like, :status, :object_id, :object_type] },
+          posts: { only: [:id, :title, :body, :status] },
+          groups: { only: [:id, :name, :status] },
+          comments: { only: [:id, :body, :status, :post_id] },
+          interactions: { only: [:id, :is_like, :status, :object_id, :object_type] },
         }
     ).map(&:deep_symbolize_keys)
 
@@ -127,10 +127,10 @@ class UsersController < ApplicationController
 
   def get_pagination_data(query)
     return {
-      current_page: @page,
+      current_page: @page.to_i,
       total_pages: query.total_pages,
       total_count: query.total_count,
-      page_limit: @page_limit
+      page_limit: @page_limit.to_i
     }
   end
 

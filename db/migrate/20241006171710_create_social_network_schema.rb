@@ -13,18 +13,6 @@ class CreateSocialNetworkSchema < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    create_table :posts, id: :uuid, default: -> { 'gen_random_uuid()' } do |t|
-      t.string :title, null: false
-      t.jsonb :body, null: false, default: '{}' # Use jsonb for post content
-      t.references :user, type: :uuid, null: false, foreign_key: true
-      t.references :group, type: :uuid, null: false, foreign_key: true
-      t.string :status, null: false
-      t.integer :like_count, default: 0
-      t.integer :dislike_count, default: 0
-      t.integer :comment_count, default: 0
-      t.timestamps
-    end
-
     create_table :groups, id: :uuid, default: -> { 'gen_random_uuid()' } do |t|
       t.string :name, null: false
       t.uuid :admin_id, type: :uuid, foreign_key: { to_table: :users }, index: true
@@ -39,6 +27,18 @@ class CreateSocialNetworkSchema < ActiveRecord::Migration[6.1]
       t.references :group, type: :uuid, null: false, foreign_key: true
       t.references :user, type: :uuid, null: false, foreign_key: true
       t.string :status, null: false
+      t.timestamps
+    end
+
+    create_table :posts, id: :uuid, default: -> { 'gen_random_uuid()' } do |t|
+      t.string :title, null: false
+      t.jsonb :body, null: false, default: '{}' # Use jsonb for post content
+      t.references :user, type: :uuid, null: false, foreign_key: true
+      t.references :group, type: :uuid, null: false, foreign_key: true
+      t.string :status, null: false
+      t.integer :like_count, default: 0
+      t.integer :dislike_count, default: 0
+      t.integer :comment_count, default: 0
       t.timestamps
     end
 
