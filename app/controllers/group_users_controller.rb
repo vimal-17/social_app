@@ -125,10 +125,10 @@ class GroupUsersController < ApplicationController
 
   def get_pagination_data(query)
     return {
-      current_page: @page,
+      current_page: @page.to_i,
       total_pages: query.total_pages,
       total_count: query.total_count,
-      page_limit: @page_limit
+      page_limit: @page_limit.to_i
     }
   end
 
